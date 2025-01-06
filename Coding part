@@ -1,0 +1,304 @@
+#include <iostream>
+#include <bits/stdc++.h> 
+using namespace std;
+
+// Class is a user-defined datatype
+
+class Hero {
+    public:
+    int health;  // Instance variable to store health
+    char *name;  // Pointer to store name of hero dynamically
+    static int timeToComplete;  // Static variable shared by all objects of Hero
+
+    // Constructor
+    Hero() {
+        cout << "Constructor called" << endl;
+        name = new char[100];  // Dynamic memory allocation for the name
+    }
+    
+    // Print function to display hero's details
+    void print() {
+        cout << endl;
+        cout << "[ Health is: " << this->health << " ,";
+        cout << "Level is: " << this->level << " ,";
+        cout << "Name is: " << this->name << " ]";
+        cout << endl << endl;
+    }
+
+    // Parameterized constructor
+    Hero(int level) {
+        this->level = level;
+    }
+
+    // Deep copy constructor
+    Hero(const Hero &temp) {
+   cout<<" Copy Constructor called" <<endl;
+   char *ch=new char[strlen(temp.name)+1];
+   strcpy(ch,this->name)//allocating new memory to this new object
+   this->name=ch;
+   this->health=temp.health;
+   this->level=temp.level;
+
+    }
+    //other than this the shallow constructor where we do not define our own constructor like as we have done above
+
+    private:
+    int level;  // Private instance variable for level
+
+    public:
+    int hr;
+    // Setters for instance variable
+    void setHealth(int h) {
+        health = h;
+    }
+    //Getter for the instance variable
+    int getLevel() {
+        return level;
+    }
+    
+    void setLevel(int a) {
+        level = a;
+    }
+
+    inline void setHealth(int a){
+        health=a;
+    }
+
+    // Function to set the name
+    void setName(char name[]) {
+        strcpy(this->name, name);
+    }
+void setHour();//prototype for making a member function outside the class
+
+    // Destructor to avoid memory leak
+    ~Hero() {
+        cout << "Destructor called for Hero " << this->name << endl;
+        delete[] name;  // Free dynamically allocated memory for name
+    }
+
+    // Static function that works on static variables
+    static int random() {
+        timeToComplete = 78;
+        return timeToComplete;  // Static member can be accessed directly without object
+    }
+};
+
+//making the member function outside the class(non-class function)
+void Hero::setHour(){
+    hour=hr;
+}
+
+// Static member initialization outside the class
+int Hero::timeToComplete = 5;
+
+int main() {
+    Hero h0;
+    h0.h3=60;
+    cout<<h0.setHour<<endl;
+    // Demonstrating static member usage
+    cout << "Time to complete: " << Hero::timeToComplete << endl;  // Access static member without object
+    cout << "Time after calling static function: " << Hero::random() << endl;  // Access static function without object
+    
+    // Demonstrating object creation (both static and dynamic)
+    Hero h1(90);  // Create object h1 using parameterized constructor
+    cout << "Health of h1: " << h1.health << endl;
+    cout << "Level of h1: " << h1.getLevel() << endl;
+    
+    // Create object dynamically
+    Hero* n = new Hero;  // Dynamically allocated Hero object
+    cout << "Health of dynamically allocated object: " << (*n).health << endl;
+
+    (*n).setName("Raghu");
+
+
+    // Initializing values using setter functions
+    h1.setHealth(100);
+    h1.setLevel(5);
+    h1.setName("Ramesh");
+
+
+    // Output the values
+    h1.print();
+
+    // Using copy constructor
+    Hero suresh = h1;  // Calls the copy constructor
+    suresh.print();
+
+    // Demonstrating deep copy
+    Hero h2(h1);  // Copy constructor creates a deep copy
+    h2.print();
+
+    // Modifying the name of the original object and showing that the copied object remains unaffected
+    h1.name[0] = 'U';  // Changing name of h1
+    cout << "After changing h1 name: " << endl;
+    h1.print();
+    h2.print();
+
+    // Memory deallocation: Destructor is called automatically when the object goes out of scope
+    Hero a;  // For manual allocation or static one, destructor gets called automatically at the end of main function
+    Hero* b = new Hero;  // For dynamic allocation, we need to call delete manually
+    delete b;  // Calling destructor manually for the dynamically allocated object
+
+    return 0;
+}
+
+
+
+
+
+class Hero {
+public:
+    int health;
+    string name;
+
+
+    inline void setName(string a){
+        name=s;
+    }
+
+    int getHealth();
+};
+
+int Hero::getHealth() {
+    return health;  // Correctly using the member variable
+}
+
+int main() {
+    Hero h1;
+    h1.health = 4;  // Directly modifying the public member variable
+    cout << h1.getHealth() << endl;  // Correctly calling the method
+    h1.setName("aid");
+ 
+
+    return 0;
+}
+
+
+//Creation of an instancec just before the semicolon of class or user defined data type ends
+
+class Hero {
+public:
+    int health;
+    string name;
+
+    // Constructor
+    Hero(int h, string n) : health(h), name(n) {}
+
+    void display() {
+        cout << "Name: " << name << ", Health: " << health << endl;
+    }
+} h1(100, "Ironman"); // Creating an instance h1 of the class Hero
+
+int main() {
+    // Accessing the object directly
+    h1.display(); // Output: Name: Ironman, Health: 100
+    return 0;
+}
+
+
+
+//Friend class declaratrion
+
+class Man{
+    private:
+    int age;
+
+    protected:
+    int healthLevel;
+
+
+ public:
+    Man(){
+        age=45;
+        healthLevel=27;
+    }
+    friend class F;
+};
+
+class F{
+    public:
+    void display(Man&m){
+        cout<<"The age of man is : "<<m.age<<endl;
+
+        cout<<"The health level of the man is : "<<m.healthLevel<<end;'' 
+    }
+}
+
+int main(){
+    Man m;
+    F f;
+    f.display();
+    return 0;
+    
+}
+
+//Member function of another calss as friend function
+
+class anotherClass;
+
+class base{
+    private:
+    int private_id;
+
+    protected:
+    int protected_id;
+
+    base(){
+        privated_id=67;
+        protected_id=12;
+    }
+
+    friend void anotherClass::memberFunction(base&obj);
+};
+
+void anotherClass::memberFunction(base&obj){
+    public:
+    cout<<"The privated id of the base class is : "<<obj.private_id;
+
+    cout<<"The protected id of the base class is :" <<obj.protecte;
+
+}
+
+class anotherClass{
+    void memberFunction(base&obj);
+}
+
+int main(){
+    base b;
+    anotherClass obj;
+    obj.memberFunction(b);
+
+    return 0;
+}
+
+#include <iostream>
+using namespace std;
+
+class A {
+private:
+    int b;
+    int c;
+
+public:
+    // Constructor
+    A(int a) {
+        b = a;
+        c = a;
+    }
+
+    // Friend function declaration
+    friend int D(A& obj);
+};
+
+// Friend function definition
+int D(A& obj) {
+    // Accessing private members b and c
+    return obj.b + obj.c; // Returning their sum for example
+}
+
+int main() {
+    A obj(7); // Creating an object of class A
+    cout << "Sum of private members: " << D(obj) << endl; // Calling the friend function
+    return 0;
+}
+
