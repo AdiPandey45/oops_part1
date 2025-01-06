@@ -10,6 +10,7 @@ class Hero {
     char *name;  // Pointer to store name of hero dynamically
     static int timeToComplete;  // Static variable shared by all objects of Hero
 
+
     // Constructor
     Hero() {
         cout << "Constructor called" << endl;
