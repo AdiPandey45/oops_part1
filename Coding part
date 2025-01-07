@@ -16,7 +16,8 @@ class Hero {
         cout << "Constructor called" << endl;
         name = new char[100];  // Dynamic memory allocation for the name
     }
-    
+
+
     // Print function to display hero's details
     void print() {
         cout << endl;
