@@ -72,11 +72,13 @@ class Hero {
     }
 void setHour();//prototype for making a member function outside the class
 
+
     // Destructor to avoid memory leak
     ~Hero() {
         cout << "Destructor called for Hero " << this->name << endl;
         delete[] name;  // Free dynamically allocated memory for name
     }
+
 
     // Static function that works on static variables
     static int random() {
