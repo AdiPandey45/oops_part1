@@ -3,7 +3,7 @@
 using namespace std;
 
 // Class is a user-defined datatype
-
+   
 class Hero {
     public:
     int health;  // Instance variable to store health
