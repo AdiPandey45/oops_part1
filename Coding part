@@ -9,7 +9,7 @@ class Hero {
     int health;  // Instance variable to store health
     char *name;  // Pointer to store name of hero dynamically
     static int timeToComplete;  // Static variable shared by all objects of Hero
-                   
+                      
 
     // Constructor               
     Hero() {
