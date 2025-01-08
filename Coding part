@@ -11,7 +11,7 @@ class Hero {
     static int timeToComplete;  // Static variable shared by all objects of Hero
 
 
-    // Constructor
+    // Constructor               
     Hero() {
         cout << "Constructor called" << endl;
         name = new char[100];  // Dynamic memory allocation for the name
