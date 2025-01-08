@@ -2,7 +2,9 @@
 #include <bits/stdc++.h> 
 using namespace std;
 
+
 // Class is a user-defined datatype
+
 
 class Hero {
     public:
