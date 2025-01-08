@@ -18,6 +18,7 @@ class Hero {
     }
 
 
+
     // Print function to display hero's details
     void print() {
         cout << endl;
