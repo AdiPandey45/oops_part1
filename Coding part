@@ -33,6 +33,7 @@ class Hero {
         this->level = level;
     }
 
+
     // Deep copy constructor
     Hero(const Hero &temp) {
    cout<<" Copy Constructor called" <<endl;
