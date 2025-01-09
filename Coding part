@@ -3,7 +3,7 @@
 using namespace std;
 
 
-// Class is a user-defined datatype
+// Class is a user-defined datatype 
 
 
 class Hero {
