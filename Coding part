@@ -46,6 +46,8 @@ class Hero {
    this->level=temp.level;
 
     }
+
+
     //other than this the shallow constructor where we do not define our own constructor like as we have done above
 
     private:
