@@ -79,6 +79,8 @@ class Hero {
     void setName(char name[]) {
         strcpy(this->name, name);
     }
+
+
 void setHour();//prototype for making a member function outside the class
 
 
