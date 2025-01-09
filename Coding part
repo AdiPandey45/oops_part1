@@ -28,6 +28,8 @@ class Hero {
         cout << endl << endl;
     }
 
+
+
     // Parameterized constructor
     Hero(int level) {
         this->level = level;
