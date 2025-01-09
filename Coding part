@@ -56,10 +56,13 @@ class Hero {
     public:
     int hr;
     // Setters for instance variable
+
     void setHealth(int h) {
         health = h;
     }
+
     //Getter for the instance variable
+
     int getLevel() {
         return level;
     }
